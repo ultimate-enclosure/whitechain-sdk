@@ -1,7 +1,6 @@
 import { http, type Transport } from 'viem'
 import type { WhiteChainConfig, WhiteChainAddresses } from '../types.js'
 import type { NetworkProfile } from '../config/networks.js'
-import { ValidationError } from '../errors/index.js'
 import { TimeoutError, ValidationError } from '../errors/index.js'
 
 type RateLimitListener = () => void
@@ -15,6 +14,9 @@ export interface WaitForTransactionOptions {
   timeoutMs?: number
 }
 
+/**
+ * Options for the HTTP {@link Provider}, including 429 retry behaviour.
+ */
 export interface ProviderOptions {
   /** Maximum number of retry attempts on HTTP 429 rate limit responses (default: 3). */
   maxRetries?: number
@@ -24,105 +26,9 @@ export interface ProviderOptions {
   fetchFn?: typeof fetch
 }
 
-export interface ProviderOptions {
-  /** Maximum number of retry attempts on HTTP 429 rate limit responses (default: 3). */
-  maxRetries?: number
-  /** Base delay in milliseconds for exponential backoff calculations (default: 100). */
-  baseDelayMs?: number
-  /** Custom fetch implementation for network requests or testing. */
-  fetchFn?: typeof fetch
-}
-
-export interface ProviderOptions {
-  /** Maximum number of retry attempts on HTTP 429 rate limit responses (default: 3). */
-  maxRetries?: number
-  /** Base delay in milliseconds for exponential backoff calculations (default: 100). */
-  baseDelayMs?: number
-  /** Custom fetch implementation for network requests or testing. */
-  fetchFn?: typeof fetch
-}
-
-export interface ProviderOptions {
-  /** Maximum number of retry attempts on HTTP 429 rate limit responses (default: 3). */
-  maxRetries?: number
-  /** Base delay in milliseconds for exponential backoff calculations (default: 100). */
-  baseDelayMs?: number
-  /** Custom fetch implementation for network requests or testing. */
-  fetchFn?: typeof fetch
-}
-
-export interface ProviderOptions {
-  /** Maximum number of retry attempts on HTTP 429 rate limit responses (default: 3). */
-  maxRetries?: number
-  /** Base delay in milliseconds for exponential backoff calculations (default: 100). */
-  baseDelayMs?: number
-  /** Custom fetch implementation for network requests or testing. */
-  fetchFn?: typeof fetch
-}
-
-export interface ProviderOptions {
-  /** Maximum number of retry attempts on HTTP 429 rate limit responses (default: 3). */
-  maxRetries?: number
-  /** Base delay in milliseconds for exponential backoff calculations (default: 100). */
-  baseDelayMs?: number
-  /** Custom fetch implementation for network requests or testing. */
-  fetchFn?: typeof fetch
-}
-
-export interface ProviderOptions {
-  /** Maximum number of retry attempts on HTTP 429 rate limit responses (default: 3). */
-  maxRetries?: number
-  /** Base delay in milliseconds for exponential backoff calculations (default: 100). */
-  baseDelayMs?: number
-  /** Custom fetch implementation for network requests or testing. */
-  fetchFn?: typeof fetch
-}
-
-export interface ProviderOptions {
-  /** Maximum number of retry attempts on HTTP 429 rate limit responses (default: 3). */
-  maxRetries?: number
-  /** Base delay in milliseconds for exponential backoff calculations (default: 100). */
-  baseDelayMs?: number
-  /** Custom fetch implementation for network requests or testing. */
-  fetchFn?: typeof fetch
-}
-
-export interface ProviderOptions {
-  /** Maximum number of retry attempts on HTTP 429 rate limit responses (default: 3). */
-  maxRetries?: number
-  /** Base delay in milliseconds for exponential backoff calculations (default: 100). */
-  baseDelayMs?: number
-  /** Custom fetch implementation for network requests or testing. */
-  fetchFn?: typeof fetch
-}
-
-export interface ProviderOptions {
-  /** Maximum number of retry attempts on HTTP 429 rate limit responses (default: 3). */
-  maxRetries?: number
-  /** Base delay in milliseconds for exponential backoff calculations (default: 100). */
-  baseDelayMs?: number
-  /** Custom fetch implementation for network requests or testing. */
-  fetchFn?: typeof fetch
-}
-
-export interface ProviderOptions {
-  /** Maximum number of retry attempts on HTTP 429 rate limit responses (default: 3). */
-  maxRetries?: number
-  /** Base delay in milliseconds for exponential backoff calculations (default: 100). */
-  baseDelayMs?: number
-  /** Custom fetch implementation for network requests or testing. */
-  fetchFn?: typeof fetch
-}
-
-export interface ProviderOptions {
-  /** Maximum number of retry attempts on HTTP 429 rate limit responses (default: 3). */
-  maxRetries?: number
-  /** Base delay in milliseconds for exponential backoff calculations (default: 100). */
-  baseDelayMs?: number
-  /** Custom fetch implementation for network requests or testing. */
-  fetchFn?: typeof fetch
-}
-
+/**
+ * JSON-RPC HTTP provider with rate-limit retry and transaction receipt polling.
+ */
 export class Provider {
   public readonly network: NetworkProfile
   public readonly chainId: number

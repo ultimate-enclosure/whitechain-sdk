@@ -1,7 +1,45 @@
 {
   "$schema": "https://typedoc.org/schema.json",
+  "name": "WhiteChain SDK",
   "entryPoints": ["src/index.ts"],
   "out": "docs",
   "tsconfig": "tsconfig.json",
-  "skipErrorChecking": true
+  "readme": "README.md",
+  "includeVersion": true,
+  "skipErrorChecking": true,
+  "excludePrivate": true,
+  "excludeProtected": true,
+  "excludeInternal": true,
+  "excludeExternals": true,
+  "excludeNotDocumented": false,
+  "githubPages": true,
+  "navigationLinks": {
+    "GitHub": "https://github.com/Adamantine-guild/whitechain-sdk",
+    "npm": "https://www.npmjs.com/package/whitechain-sdk"
+  },
+  "categorizeByGroup": true,
+  "searchInComments": true,
+  "treatWarningsAsErrors": false,
+  "validation": {
+    "notDocumented": false,
+    "notExported": false,
+    "invalidLink": false,
+    "rewrittenLink": false,
+    "unusedMergeModuleWith": false
+  },
+  "externalSymbolLinkMappings": {
+    "viem": {
+      "*": "https://viem.sh/"
+    },
+    "typescript": {
+      "*": "https://www.typescriptlang.org/docs/handbook/"
+    }
+  },
+  "commentStyle": "all",
+  "jsDocCompatibility": {
+    "exampleTag": true,
+    "defaultTag": true,
+    "inheritDocTag": true,
+    "ignoreUnescapedBraces": true
+  }
 }

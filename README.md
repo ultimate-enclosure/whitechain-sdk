@@ -475,3 +475,16 @@ For security policies and vulnerability reporting, please refer to [SECURITY.md]
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## API Documentation
+
+HTML API docs are generated from TypeScript sources with [TypeDoc](https://typedoc.org/):
+
+```bash
+npm run docs
+# output ? ./docs (open docs/index.html)
+```
+
+On every release tag (`v*`), GitHub Actions rebuilds TypeDoc and deploys to **GitHub Pages**
+(see `.github/workflows/docs.yml`).
+
